@@ -16,6 +16,7 @@ class HospitalPatient(models.Model):
     name_seq = fields.Char(string="Order reference", required=True, copy=False, index=True, default='New')
     gender = fields.Selection(string="Gender", selection=[('male', 'Male'), ('fe_male', 'Female'), ], default='male' )
     age_group = fields.Selection(string="Age Group", selection=[('major', 'Major'), ('minor', 'Minor'), ], compute='set_age_group', )
+    name = fields.Float()
 
     @api.depends('patient_age')
     def set_age_group(self):
